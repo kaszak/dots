@@ -1,0 +1,60 @@
+! Black
+*color0:           #262626
+*color8:           #252525
+
+! Red
+*color1:           #C12121
+*color9:           #E50E0E
+
+! Green
+*color2:           #597b20
+*color10:          #89b83f
+
+! Yellow
+*color3:           #Ded838
+*color11:          #efef60
+
+! Blue
+*color4:           #265997
+*color12:          #3F6FD0
+
+! Magenta
+*color5:           #706c9a
+*color13:          #826ab1
+
+! Cyan
+*color6:           #69a2b0
+*color14:          #a1cdcd
+
+! White
+*color7:           #BBBBBB
+*color15:          #EEEEEF
+
+*foreground: 	   #BBBBBB
+URxvt*.depth: 32
+*background:       #000000
+
+! scrollbar style - rxvt (default), plain (most compact), next, or xterm
+URxvt.scrollstyle: plain
+
+!URxvt.iconFile:    /usr/share/icons/Clarity/scalable/apps/terminal.svg
+
+URxvt.perl-ext-common:  default,matcher,clipboard,tabbed,keyboard-select
+URxvt.url-launcher:      /usr/bin/chromium
+URxvt.matcher.button:   1
+URxvt.clipboard.autocopy: true
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
+!URxvt.keysym.M-v: perl:clipboard:paste
+!URxvt.keysym.M-c: perl:clipboard:copy
+
+URxvt.tabbed.tabbar-fg: 7
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg:    4
+URxvt.tabbed.tab-bg:    0
+
+URxvt.font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-1
+URxvt.iso14755 : false
+
+!Xcursor.theme: foobar
