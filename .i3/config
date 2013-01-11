@@ -30,7 +30,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -fn -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-1 -nb black'
+bindsym $mod+d exec --no-startup-id dmenu_run -fn '-*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-1' -nb black
 
 # change focus
 bindsym $mod+j focus left
@@ -143,7 +143,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         #status_command i3status | /home/kaszak/bin/mpdwrap.py
-	status_command /home/kaszak/bin/mpdwrap2.py
+	status_command /home/kaszak/projekty/py3status/py3status.py
 	colors {
         	background #000000
         	statusline #BBBBBB
@@ -181,6 +181,7 @@ hide_edge_borders both
 assign [class="Chromium"] 2
 assign [class="Kadu"] 4
 assign [class="Wine"] 5
+assign [class="Steam"] 5
 assign [class="Tixati"] 6
 
 exec --no-startup-id spacefm -d
