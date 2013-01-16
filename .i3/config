@@ -176,7 +176,13 @@ bindsym $mod+t exec tixati
 bindsym $mod+m exec spacefm
 bindsym $mod+g exec geany
 
-new_window none
+#DPMS on/off
+bindsym $mod+q exec --no-startup-id /home/kaszak/bin/dpms_on_off.py
+
+#lock screen
+bindsym $mod+z exec --no-startup-id "i3lock&; sleep 1; xset dpms force off"
+
+new_window 1pixel
 hide_edge_borders both
 assign [class="Chromium"] 2
 assign [class="Kadu"] 4
