@@ -2,7 +2,6 @@ abs
 acetoneiso2
 acpid
 alsa-utils
-archlinux-lxdm-theme
 archlinux-themes-slim
 ario
 aspell-en
@@ -22,7 +21,6 @@ catalyst-hook
 cdrdao
 chromium
 colord
-conky
 coreutils
 cpupower
 cronie
@@ -31,7 +29,6 @@ cups
 device-mapper
 dhcpcd
 diffutils
-dina-font
 dmenu
 dnsutils
 dosfstools
@@ -39,7 +36,6 @@ dunst
 dvd+rw-tools
 e2fsprogs
 easytag
-epdfview
 fakeroot
 feh
 file
@@ -57,9 +53,7 @@ gettext
 gimp
 git
 glibc
-gmrun
 gnu-netcat
-gparted
 gpicview
 grep
 grml-zsh-config
@@ -75,7 +69,6 @@ gtk3
 gzip
 hddtemp
 hdparm
-heirloom-mailx
 hplip
 html2text
 htop
@@ -83,10 +76,8 @@ hunspell-en
 hunspell-pl
 i3-wm
 i3lock
-i3status
 inetutils
 iputils
-irssi
 jfsutils
 jre7-openjdk
 kadu
@@ -108,7 +99,6 @@ librsvg
 libtool
 libxpm
 licenses
-lilyterm
 linux-ck-core2
 linux-ck-core2-headers
 lm_sensors
@@ -116,13 +106,10 @@ logrotate
 lsof
 lvm2
 lxappearance
-lxdm
-lxtask
 make
 man-db
 man-pages
 mdadm
-meld
 mesa
 mesa-demos
 mpc
@@ -227,7 +214,6 @@ xorg-xinput
 xorg-xprop
 xorg-xrdb
 xorg-xsetroot
-xpdf
 xsane
 xvba-video
 zathura
