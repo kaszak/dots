@@ -4,18 +4,19 @@ import re
 from subprocess import Popen, call, PIPE
 import sys
 import socket
+import os
 
 dpms_re = re.compile(r'DPMS is (?P<state>Enabled|Disabled)')
 command_q = 'xset q'.split()
 command_off = 'xset -dpms; xset s off'
 command_on = 'xset +dpms; xset s on'
 command_dpms_off = 'xset dpms force off'
+fifo = '/tmp/Statusbar.DPMS'
 
-def send_to_statusbar(state, port):
-    send_state = socket.socket()
-    send_state.connect(('localhost', port))
-    send_state.sendall(state)
-    send_state.close()
+def send_to_statusbar(state):
+    with open(fifo, 'w') as dump:
+        dump.write(state)
+        dump.flush()
 
 def main():
     '''
@@ -31,15 +32,15 @@ def main():
         dpms_state = dpms_re.search(output).group('state')
         if dpms_state == 'Enabled':
             call(command_off, shell=True)
-            state = b'OFF'
+            state = 'OFF'
         else:
             call(command_on, shell=True)
-            state = b'ON'
+            state = 'ON'
     elif sys.argv[1] == 'off':
         call(command_dpms_off, shell=True)
-        state = b'ON'
+        state = 'ON'
         
-    send_to_statusbar(state, port)
+    send_to_statusbar(state)
         
 	
 

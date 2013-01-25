@@ -24,6 +24,8 @@ xset fp rehash
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export PATH="/home/kaszak/bin:$PATH"
 mpd ~/.mpdconf
+# NUKE CAPS, FFS
+xmodmap -e 'keycode  66 = NoSymbol Caps_Lock Caps_Lock'
 exec i3
 
 #DEFAULT_SESSION=awesome
