@@ -10,6 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+#set $statuscolor #000000
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -142,7 +143,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        #status_command i3status | /home/kaszak/bin/mpdwrap.py
+#        status_command i3status
 	status_command /home/kaszak/projekty/py3status/py3status.py
 	colors {
         	background #000000
@@ -180,7 +181,7 @@ bindsym $mod+g exec geany
 bindsym $mod+q exec --no-startup-id /home/kaszak/bin/dpms_on_off.py
 
 #lock screen
-bindsym $mod+z exec --no-startup-id "i3lock&; sleep 1; xset dpms force off"
+bindsym $mod+z exec --no-startup-id "i3lock&; sleep 1; /home/kaszak/bin/dpms_on_off.py off"
 
 new_window 1pixel
 hide_edge_borders both
@@ -194,4 +195,3 @@ exec --no-startup-id spacefm -d
 exec --no-startup-id dunst
 exec --no-startup-id feh --bg-scale /home/kaszak/wallpapers/Pong_simple_desktops.png
 exec --no-startup-id chromium
-
