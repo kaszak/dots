@@ -4,6 +4,7 @@ import pickle
 import feedparser
 import os
 import re
+import sys
 from datetime import datetime
 from sh import chromium, sleep
 
@@ -45,7 +46,7 @@ if __name__ == '__main__':
         with open(TIME_FILE, 'rb') as time_file:
             last_time = pickle.load(time_file)
     except FileNotFoundError:
-        last_time = time.gmtime()
+        last_time = datetime.today().timetuple()
         with open(TIME_FILE, 'wb') as time_file:
             pickle.dump(datetime.today().timetuple(), time_file)
         print('Saved current time as last_time.')
