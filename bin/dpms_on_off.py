@@ -23,9 +23,7 @@ def main():
     Turns off screen power management if it's on, otherwise turns it
     on. Can also turn off backlight.
     '''
-    
-    with open('/tmp/.statusbar.port') as port_file:
-        port = int(port_file.read())
+
     if len(sys.argv) <= 1:
         xset = Popen(command_q, stdout=PIPE)
         output = xset.stdout.read().decode()
