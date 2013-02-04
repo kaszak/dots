@@ -22,7 +22,6 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-export PATH="/home/kaszak/bin:$PATH"
 mpd ~/.mpdconf
 # NUKE CAPS, FFS
 xmodmap -e 'keycode  66 = NoSymbol Caps_Lock Caps_Lock'

@@ -18,4 +18,4 @@ compinit
 #alias reboot="sudo reboot"
 BROWSER=chromium
 EDITOR=nano
-PATH="/home/kaszak/bin:$PATH"
+export PATH="/home/kaszak/bin:$PATH"

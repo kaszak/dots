@@ -3,69 +3,39 @@
 import pickle
 import feedparser
 import os
-import re
-from datetime import datetime
-from sh import chromium, sleep
+import sys
 
-months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+from sh import chromium
 
-date_pclab = re.compile(r'''
-    ^
-    \D{3},\   #Match Day, grouping it is not necessary, ex: Tue,
-    (\d{,2})\ #Match numerical value of Day
-    (\D{3})\  #Match Month, ex: Dec
-    (\d{4})\  #Match Year, four digits
-    (\d{2}):  #Hours
-    (\d{2}):  #Minutes
-    (\d{2})   #Seconds
-    $
-    ''', re.VERBOSE)
+CACHE_FILE = os.getenv('HOME') + '/.last_entries'
+RSS_FILE = os.getenv('HOME') + '/rss_urls'
 
-def PclabHandler(DateString):
-    """parse a UTC date in DDD, DD MMM YYYY HH:MM:SS"""
+def main():
     try:
-        day, month, year, hour, minute, second = date_pclab.search(DateString).groups()
-        #parsed_date = list(date_pclab.search(DateString).groups())
-    except AttributeError:
-        return None
-    month = months.index(month) + 1
-    #return parsed_date
-    return datetime(int(year), int(month), int(day), int(hour), int(minute), int(second)).timetuple()
-    #return datetime(*parsed_date).timetuple()
-
-if __name__ == '__main__':
-    
-    TIME_FILE = os.getenv('HOME') + '/.last_time'
-    RSS_FILE = os.getenv('HOME') + '/rss_urls'
-    
-    rss_urls =[]
-    
-    
-    try:
-        with open(TIME_FILE, 'rb') as time_file:
-            last_time = pickle.load(time_file)
-    except FileNotFoundError:
-        last_time = time.gmtime()
-        with open(TIME_FILE, 'wb') as time_file:
-            pickle.dump(datetime.today().timetuple(), time_file)
-        print('Saved current time as last_time.')
-        sys.exit()
+        with open(CACHE_FILE, 'rb') as last_entries_file:
+            last_entries = pickle.load(last_entries_file)
+    except (FileNotFoundError, OSError):
+        last_entries = []
+       
+    new_entries = []
     
     try:
         with open(RSS_FILE) as rss_file:
-            for line in rss_file:
-                rss_urls.append(line.strip())
+            rss_urls = rss_file.read().split()
     except FileNotFoundError:
         print('The configuration file with feed urls is missing, fix it!')
         sys.exit(1)
 
-    feedparser.registerDateHandler(PclabHandler)
     for url in rss_urls:
         parsed = feedparser.parse(url)
         for entry in parsed.entries:
-            if entry.published_parsed > last_time:
+            if entry not in last_entries:
                 chromium(entry.link)
                 print('Opened {}'.format(entry.link))
+            new_entries.extend(parsed.entries)
     
-    with open(TIME_FILE, 'wb') as time_file:
-        pickle.dump(datetime.today().timetuple(), time_file)
+    with open(CACHE_FILE, 'wb') as last_entries_file:
+        pickle.dump(new_entries, last_entries_file)
+
+if __name__ == '__main__':
+    main()
