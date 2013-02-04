@@ -4,6 +4,7 @@ import pickle
 import feedparser
 import os
 import sys
+<<<<<<< HEAD
 
 from sh import chromium
 
@@ -15,6 +16,22 @@ def main():
         with open(CACHE_FILE, 'rb') as last_entries_file:
             last_entries = pickle.load(last_entries_file)
     except (FileNotFoundError, OSError):
+=======
+from sh import chromium
+
+if __name__ == '__main__':
+    
+    CACHE_FILE = os.getenv('HOME') + '/.last_entries'
+    RSS_FILE = os.getenv('HOME') + '/rss_urls'
+    
+    rss_urls =[]
+    
+    
+    try:
+        with open(CACHE_FILE, 'rb') as last_entries_file:
+            last_entries = pickle.load(last_entries_file)
+    except FileNotFoundError:
+>>>>>>> 758c15fe26baf9b9bc150e10147b82a7b0f98b29
         last_entries = []
        
     new_entries = []
@@ -36,6 +53,9 @@ def main():
     
     with open(CACHE_FILE, 'wb') as last_entries_file:
         pickle.dump(new_entries, last_entries_file)
+<<<<<<< HEAD
 
 if __name__ == '__main__':
     main()
+=======
+>>>>>>> 758c15fe26baf9b9bc150e10147b82a7b0f98b29
