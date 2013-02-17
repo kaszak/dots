@@ -25,6 +25,7 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 mpd ~/.mpdconf
 # NUKE CAPS, FFS
 xmodmap -e 'keycode  66 = NoSymbol Caps_Lock Caps_Lock'
+unclutter -idle 10 &
 exec i3
 
 #DEFAULT_SESSION=awesome

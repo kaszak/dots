@@ -192,7 +192,9 @@ assign [class="Wine"] 5
 assign [class="Steam"] 5
 assign [class="Tixati"] 6
 
+for_window [class="Wine"] floating enable
+
 exec --no-startup-id spacefm -d
 exec --no-startup-id dunst
-exec --no-startup-id feh --bg-scale /home/kaszak/wallpapers/Pong_simple_desktops.png
+exec --no-startup-id feh --bg-scale /home/kaszak/wallpapers/psychadelic_cat.png
 exec --no-startup-id chromium
