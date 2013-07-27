@@ -22,10 +22,13 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export TERMINAL=urxvtc
+export VDPAU_DRIVER=r600
 mpd ~/.mpdconf
+urxvtd -q -f -o
 # NUKE CAPS, FFS
 xmodmap -e 'keycode  66 = NoSymbol Caps_Lock Caps_Lock'
-unclutter -idle 10 &
+unclutter -grab -idle 10 &
 exec i3
 
 #DEFAULT_SESSION=awesome
@@ -33,3 +36,4 @@ exec i3
 #  awesome|wmii|xmonad) exec $1 ;;
 #  *) exec $DEFAULT_SESSION ;;
 #esac
+

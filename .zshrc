@@ -11,11 +11,16 @@ zstyle :compinstall filename '/home/kaszak/.zshrc'
 
 autoload -Uz compinit
 compinit
+autoload -U bashcompinit
+bashcompinit
+
 # End of lines added by compinstall
 
 # SUCK IT, POLKIT
 #alias poweroff="sudo poweroff"
 #alias reboot="sudo reboot"
-BROWSER=chromium
-EDITOR=nano
+alias aura="sudo aura"
+export BROWSER=chromium
+export EDITOR=nano
 export PATH="/home/kaszak/bin:$PATH"
+export TERMINAL=urxvtc

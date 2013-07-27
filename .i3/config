@@ -31,7 +31,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run -fn '-*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-1' -nb black
+#bindsym $mod+d exec --no-startup-id dmenu_run -fn '-*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-1' -nb black
+bindsym $mod+d exec --no-startup-id interrobang
 
 # change focus
 bindsym $mod+j focus left
@@ -164,12 +165,12 @@ client.unfocused        #333333 #222222 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
 
 #Media Keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id /home/kaszak/bin/send_command.py alsa up
-bindsym XF86AudioLowerVolume exec --no-startup-id /home/kaszak/bin/send_command.py alsa down
-bindsym XF86AudioMute exec --no-startup-id /home/kaszak/bin/send_command.py alsa mute
-bindsym XF86AudioPlay exec --no-startup-id /home/kaszak/bin/send_command.py mpd toggle
-bindsym XF86AudioNext exec --no-startup-id /home/kaszak/bin/send_command.py mpd next
-bindsym XF86AudioPrev exec --no-startup-id /home/kaszak/bin/send_command.py mpd prev
+bindsym XF86AudioRaiseVolume exec --no-startup-id /home/kaszak/bin/send_command alsa up
+bindsym XF86AudioLowerVolume exec --no-startup-id /home/kaszak/bin/send_command alsa down
+bindsym XF86AudioMute exec --no-startup-id /home/kaszak/bin/send_command alsa mute
+bindsym XF86AudioPlay exec --no-startup-id /home/kaszak/bin/send_command mpd toggle
+bindsym XF86AudioNext exec --no-startup-id /home/kaszak/bin/send_command mpd next
+bindsym XF86AudioPrev exec --no-startup-id /home/kaszak/bin/send_command mpd prev
 bindsym XF86Eject exec --no-startup-id devmon --eject /dev/sr0
 
 #useless programs
@@ -179,11 +180,16 @@ bindsym $mod+m exec spacefm
 bindsym $mod+g exec geany
 
 #DPMS on/off
-bindsym $mod+q exec --no-startup-id /home/kaszak/bin/send_command.py dpms toggle
+bindsym $mod+q exec --no-startup-id /home/kaszak/bin/send_command dpms toggle
 
 #lock screen
-bindsym $mod+z exec --no-startup-id "i3lock&; sleep 1; /home/kaszak/bin/send_command.py dpms off"
+bindsym $mod+z exec --no-startup-id "killall unclutter; i3lock&; sleep 1; /home/kaszak/bin/send_command dpms turn_off; unclutter -grab -idle 10 &"
 
+# toggle touchpad on/off
+bindsym $mod+x exec --no-startup-id /home/kaszak/bin/send_command touchpad toggle
+
+# toggle Radeon power profile mid/high
+#bindsym $mod+c exec --no-startup-id /home/kaszak/bin/send_command profile toggle
 new_window 1pixel
 hide_edge_borders both
 assign [class="Chromium"] 2
@@ -193,8 +199,9 @@ assign [class="Steam"] 5
 assign [class="Tixati"] 6
 
 for_window [class="Wine"] floating enable
-
+for_window [class="VirtualBox"] floating enable
+for_window [class="Xsane"] floating enable
 exec --no-startup-id spacefm -d
 exec --no-startup-id dunst
-exec --no-startup-id feh --bg-scale /home/kaszak/wallpapers/psychadelic_cat.png
+exec --no-startup-id feh --bg-scale ~/wallpapers/arch_linux___kiss_by_abhinandh-d4exikc.png
 exec --no-startup-id chromium
