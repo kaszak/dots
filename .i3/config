@@ -84,6 +84,14 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindcode $mod+d focus child
 
+	
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -145,8 +153,16 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 #        status_command i3status
-	status_command /home/kaszak/projekty/py3status/py3status.py
+    status_command /home/kaszak/projekty/py3status/py3status.py
+    #status_command /home/kaszak/testconky.sh
     font pango:Terminus 9
+    
+
+    #mode hide
+    #hidden_state hide
+    #modifier $mod
+
+
 	colors {
         	background #000000
         	statusline #262626
@@ -174,7 +190,7 @@ bindsym XF86AudioPrev exec --no-startup-id /home/kaszak/bin/send_command mpd pre
 bindsym XF86Eject exec --no-startup-id devmon --eject /dev/sr0
 
 #useless programs
-bindsym $mod+b exec chromium
+bindsym $mod+b exec firefox
 bindsym $mod+t exec tixati
 bindsym $mod+m exec spacefm
 bindsym $mod+g exec geany
@@ -192,7 +208,7 @@ bindsym $mod+x exec --no-startup-id /home/kaszak/bin/send_command touchpad toggl
 #bindsym $mod+c exec --no-startup-id /home/kaszak/bin/send_command profile toggle
 new_window 1pixel
 hide_edge_borders both
-assign [class="Chromium"] 2
+assign [class="Firefox"] 1
 assign [class="Kadu"] 4
 assign [class="Wine"] 5
 assign [class="Steam"] 5
@@ -201,7 +217,9 @@ assign [class="Tixati"] 6
 for_window [class="Wine"] floating enable
 for_window [class="VirtualBox"] floating enable
 for_window [class="Xsane"] floating enable
+for_window [class="Gsimplecal"] floating enable
+for_window [class="Gsimplecal"] move absolute position 1189px 605px
 exec --no-startup-id spacefm -d
 exec --no-startup-id dunst
 exec --no-startup-id feh --bg-scale ~/wallpapers/arch_linux___kiss_by_abhinandh-d4exikc.png
-exec --no-startup-id chromium
+exec --no-startup-id firefox

@@ -40,7 +40,7 @@ URxvt.scrollstyle: plain
 !URxvt.iconFile:    /usr/share/icons/Clarity/scalable/apps/terminal.svg
 
 URxvt.perl-ext-common:  default,matcher,clipboard,tabbed,keyboard-select
-URxvt.url-launcher:      /usr/bin/chromium
+URxvt.url-launcher:      /usr/bin/firefox
 URxvt.matcher.button:   1
 URxvt.clipboard.autocopy: true
 URxvt.keysym.C-C: perl:clipboard:copy

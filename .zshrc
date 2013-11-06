@@ -20,7 +20,7 @@ bashcompinit
 #alias poweroff="sudo poweroff"
 #alias reboot="sudo reboot"
 alias aura="sudo aura"
-export BROWSER=chromium
+export BROWSER=firefox
 export EDITOR=nano
 export PATH="/home/kaszak/bin:$PATH"
 export TERMINAL=urxvtc

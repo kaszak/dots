@@ -16,8 +16,6 @@ fi
 # exec startxfce4
 # ...or the Window Manager of your choice
 
-#wicd-client --tray
-#urxvtd
 xset +fp /usr/share/fonts/local
 xset fp rehash
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
@@ -30,10 +28,4 @@ urxvtd -q -f -o
 xmodmap -e 'keycode  66 = NoSymbol Caps_Lock Caps_Lock'
 unclutter -grab -idle 10 &
 exec i3
-
-#DEFAULT_SESSION=awesome
-#case $1 in
-#  awesome|wmii|xmonad) exec $1 ;;
-#  *) exec $DEFAULT_SESSION ;;
-#esac
-
+#exec startkde
